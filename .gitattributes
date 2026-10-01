@@ -1,0 +1,9 @@
+* text=auto
+*.sh text eol=lf
+.githooks/* text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+.gitmodules text eol=lf
+.env.example text eol=lf
+*.md text eol=lf
+*.ps1 text eol=crlf

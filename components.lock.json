@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "components": [
+    {
+      "name": "hermes-action-bridge",
+      "path": "components/hermes-action-bridge",
+      "upstream": "https://github.com/TheBlueHouse75/hermes-action-bridge.git",
+      "revision": "e5a1e6f10b29a8ca3d5209387c7dd17ffa2a1d45",
+      "version": "0.6.3",
+      "license": "MIT"
+    },
+    {
+      "name": "chatgpt-escalation-mcp",
+      "path": "components/chatgpt-escalation-mcp",
+      "upstream": "https://github.com/Dazlarus/chatgpt-escalation-mcp.git",
+      "revision": "e1e324f34aed0e23281764651797e6529978a074",
+      "version": "1.1.0",
+      "license": "MIT"
+    }
+  ]
+}

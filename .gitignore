@@ -1,0 +1,50 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+config/*.local.*
+.hermes-action.yaml
+.chatgpt-escalation/
+.hermes/
+credentials*.json
+auth*.json
+cookies*
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+.ssh/
+.aws/
+
+# Runtime data and browser profiles
+.local/
+runtime/
+logs/
+sessions/
+browser-profile/
+*.log
+*.db
+*.db-*
+*.sqlite*
+*.pid
+
+# Build/runtime dependencies
+node_modules/
+dist/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+coverage/
+.cache/
+
+# Editor and operating system local state
+.vscode/*
+!.vscode/tasks.json
+.idea/
+.DS_Store
+Thumbs.db
+*.tmp

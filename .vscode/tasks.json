@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    { "label": "Bridge: check components", "type": "npm", "script": "check:components", "problemMatcher": [] },
+    { "label": "Bridge: check tracked secrets", "type": "npm", "script": "check:secrets", "problemMatcher": [] },
+    { "label": "Bridge: enable Git hooks", "type": "npm", "script": "setup:git", "problemMatcher": [] }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "platform": "windows",
+    "hermes_command": "",
+    "state_directory": ".local"
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8765,
+    "auth_token_env": "BRIDGE_AUTH_TOKEN"
+  },
+  "tasks": {
+    "max_hops": 1,
+    "timeout_seconds": 600,
+    "lock_scope": "task",
+    "deny_chatgpt_origin_escalation": true
+  },
+  "escalation": {
+    "enabled": false,
+    "project": "Hermes Agent",
+    "conversation": "Hermes Escalation",
+    "serialize_requests": true,
+    "verified_application_path": ""
+  },
+  "logging": {
+    "level": "info",
+    "record_payloads": false
+  }
+}
