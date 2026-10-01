@@ -6,11 +6,11 @@ Before committing, inspect staged names and run `npm run check:staged`. Before p
 
 Commit submodule gitlinks, `.gitmodules` and `components.lock.json` together. A normal clone does not contain third-party source until submodules are initialized. Avoid `git submodule update --remote` during routine setup because it changes the checked revision.
 
-## Remote configuration (next checkpoint)
+## Remote configuration
 
-The GitHub account, repository ownership, visibility and authentication must be confirmed before remote creation. The original conversation's example `LycoRepo` is not proof of the currently authenticated account. The scaffold has no origin until that check is complete.
+The authenticated GitHub account was verified as `LycoRepo`. The repository `LycoRepo/chatgpt-hermes-bridge` is private, and `origin` is `https://github.com/LycoRepo/chatgpt-hermes-bridge.git`. `main` is the published baseline. GitHub authentication is stored in the system credential manager, not in project files.
 
-After the account and destination are verified, create an empty repository with the selected visibility, add its credential-free HTTPS or SSH URL as `origin`, and push `main`. Do not create a separate remote README that would diverge from the local first commit. Never embed a token in a remote URL.
+This local checkout uses a repository-scoped GitHub CLI credential helper. The portable CLI must remain available at its configured local path. Other clones configure their own credential helper; those machine-specific settings are not versioned. Never embed a token in a remote URL.
 
 If GitHub CLI is used, inspect account status without printing tokens. Credentials remain in the existing credential manager or authorized SSH setup. Do not copy keys into this repository.
 

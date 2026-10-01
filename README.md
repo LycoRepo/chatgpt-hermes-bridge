@@ -18,11 +18,13 @@
 ## 获取项目
 
 ```powershell
-git clone --recurse-submodules <YOUR_REPOSITORY_URL>
+git clone --recurse-submodules https://github.com/LycoRepo/chatgpt-hermes-bridge.git
 cd chatgpt-hermes-bridge
 ```
 
 已有克隆：
+
+此仓库目前为私有仓库，克隆需要获得授权的 GitHub 账户。
 
 ```powershell
 git submodule update --init --recursive
