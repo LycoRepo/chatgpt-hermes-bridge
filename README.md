@@ -26,7 +26,7 @@ cd chatgpt-hermes-bridge
 
 实现已在 `main`。历史检查点分支 `feat/windows-link-validation` 保留，可用 `git checkout feat/windows-link-validation` 查看合并前状态。
 
-此仓库目前为私有仓库，克隆需要获得授权的 GitHub 账户。
+本仓库为公开仓库（2026-10-02 起），无需授权即可克隆；引用的组件也均为公开仓库。
 
 ```powershell
 git submodule update --init --recursive
