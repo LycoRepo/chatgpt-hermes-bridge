@@ -12,8 +12,11 @@
     {
       "name": "chatgpt-escalation-mcp",
       "path": "components/chatgpt-escalation-mcp",
-      "upstream": "https://github.com/Dazlarus/chatgpt-escalation-mcp.git",
-      "revision": "e1e324f34aed0e23281764651797e6529978a074",
+      "upstream": "https://github.com/LycoRepo/chatgpt-escalation-mcp.git",
+      "original_upstream": "https://github.com/Dazlarus/chatgpt-escalation-mcp.git",
+      "upstream_base_revision": "e1e324f34aed0e23281764651797e6529978a074",
+      "upstream_pull_request": "https://github.com/Dazlarus/chatgpt-escalation-mcp/pull/1",
+      "revision": "53ce4606fa3e3ab0c4b2cd837a89435f036a6a2b",
       "version": "1.1.0",
       "license": "MIT"
     }

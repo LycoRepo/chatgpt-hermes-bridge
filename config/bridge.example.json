@@ -13,7 +13,7 @@
   "tasks": {
     "max_hops": 1,
     "timeout_seconds": 600,
-    "lock_scope": "task",
+    "lock_scope": "store",
     "deny_chatgpt_origin_escalation": true
   },
   "escalation": {
@@ -21,6 +21,8 @@
     "project": "Hermes Agent",
     "conversation": "Hermes Escalation",
     "serialize_requests": true,
+    "bound_session_id": null,
+    "claim_lease_seconds": 60,
     "verified_application_path": ""
   },
   "logging": {
