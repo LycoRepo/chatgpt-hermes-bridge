@@ -1,0 +1,14 @@
+import {join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {readFile} from 'node:fs/promises';
+import {Coordinator} from '../src/coordinator.mjs';
+import {runHermesTask} from '../src/adapters/hermes-task.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const coordinator=new Coordinator({directory:join(root,'.local','coordinator-probe'),timeoutMs:90000});
+const task=await coordinator.submitChatGPT('Connectivity test only. Do not use tools, inspect files, send messages, or change anything. Reply exactly BRIDGE_COORDINATOR_OK.');
+const command=process.env.HERMES_COMMAND||join(process.env.LOCALAPPDATA??'','hermes','bin','hermes.exe');
+const result=await runHermesTask(coordinator,task.id,{command});
+const state=JSON.parse(await readFile(join(root,'.local','coordinator-probe','tasks.json'),'utf8'));
+const markerReceived=state.tasks[task.id]?.response?.includes('BRIDGE_COORDINATOR_OK')??false;
+console.log(JSON.stringify({id:result.id,status:result.status,markerReceived,uiOperations:0},null,2));
+if(result.status!=='completed'||!markerReceived) process.exitCode=1;

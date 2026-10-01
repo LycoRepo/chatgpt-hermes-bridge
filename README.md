@@ -2,7 +2,7 @@
 
 面向 Windows Hermes 的双向协同组合项目。复用开源组件，由本仓库负责配置、任务协调和运行管理。WSL2 保留为 Codex / VS Code Remote 开发环境，Hermes 继续运行在 Windows。
 
-**当前状态：Windows Hermes 真实任务委派已通过。反向组件已 fork 并修正应用身份识别，14 项无界面测试通过，已向上游提交 draft PR。新版 ChatGPT 界面的完整往返尚未验证；反向 UI 自动化继续关闭。一键运行、任务锁和专用会话仍待实现。**
+**当前状态：任务协调层与本地 MCP 工具已实现，17 项主仓库测试通过，经协调层委派 Windows Hermes 的真实往返也通过。反向组件的身份修正已提交上游 draft PR。新版应用中的专用会话绑定、自动接收和完整双向往返仍待验证；反向 UI 自动化保持关闭。一键安装/启动/停止/doctor 是下一模块。**
 
 ## 组件
 
@@ -38,13 +38,15 @@ Windows 需要 Git、Node.js 20+、已配置的 Hermes CLI。使用 Hermes 的 `
 npm run setup:git
 npm run check:components
 npm run check:secrets
-npm run test:target
+npm test
 npm run check:chatgpt
 ```
 
 `setup:git` 为当前克隆启用本仓库的提交/推送检查。检查只扫描主仓库 Git 内容，不读取用户凭据或浏览器资料。组件固定版本检查要求 submodule 已初始化。
 
 复制 `.env.example` 为 `.env`、`config/bridge.example.json` 为 `config/bridge.local.json`，在本地填写实际 CLI 路径。模板不会自动修改 Hermes 或 Codex 配置；后续模块会提供生成和安装操作。
+
+运行测试前，先在 `components/hermes-action-bridge` 执行 `npm ci --ignore-scripts` 和 `npm run build`。本地 stdio 工具入口为 `node scripts/mcp.mjs chatgpt`；这提供规划委派，不会自动把连接注册进当前应用。任务协调、三种工具角色和专用会话待验边界见 [coordinator.md](docs/coordinator.md)。
 
 ## 开发约定
 
