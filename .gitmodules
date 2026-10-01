@@ -3,4 +3,4 @@
 	url = https://github.com/TheBlueHouse75/hermes-action-bridge.git
 [submodule "components/chatgpt-escalation-mcp"]
 	path = components/chatgpt-escalation-mcp
-	url = https://github.com/Dazlarus/chatgpt-escalation-mcp.git
+	url = https://github.com/LycoRepo/chatgpt-escalation-mcp.git

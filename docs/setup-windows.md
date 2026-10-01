@@ -6,7 +6,7 @@
 4. Copy `.env.example` to `.env` and `config/bridge.example.json` to `config/bridge.local.json`. Fill the actual Windows CLI path locally. No secrets or machine-specific profiles are needed in versioned templates.
 5. Run `npm run check:components` and `npm run check:secrets`.
 
-No installer, start/stop/doctor or automatic user configuration changes are shipped at this checkpoint. Those are a later implementation module. Do not run the upstream escalation driver until application identity matching is corrected.
+No installer, start/stop/doctor or automatic user configuration changes are shipped at this checkpoint. Those are a later implementation module. The fork corrects application identity matching, but do not enable its unified-app UI driver until live navigation/input/response compatibility is verified.
 
 Use an isolated Python environment for UI/OCR dependencies. The Windows Hermes installation currently has its own Python runtime; do not install UI dependencies into that runtime by default.
 

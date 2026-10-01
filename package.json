@@ -10,6 +10,9 @@
     "setup:git": "git config --local core.hooksPath .githooks",
     "check:components": "node scripts/check-components.mjs",
     "check:secrets": "node scripts/check-secrets.mjs --tracked",
-    "check:staged": "node scripts/check-secrets.mjs --staged"
+    "check:staged": "node scripts/check-secrets.mjs --staged",
+    "probe:hermes": "node scripts/probe-hermes.mjs",
+    "check:chatgpt": "node scripts/check-chatgpt-target.mjs",
+    "test:target": "node --test tests/chatgpt-target.test.mjs"
   }
 }
