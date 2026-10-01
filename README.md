@@ -18,11 +18,13 @@
 ## 获取项目
 
 ```powershell
-git clone --recurse-submodules https://github.com/LycoRepo/chatgpt-hermes-bridge.git
+git clone --branch feat/windows-link-validation --recurse-submodules https://github.com/LycoRepo/chatgpt-hermes-bridge.git
 cd chatgpt-hermes-bridge
 ```
 
 已有克隆：
+
+实现目前位于 `feat/windows-link-validation` 检查点分支，尚未合并到 `main`。已有克隆先切换到该分支，再初始化组件。
 
 此仓库目前为私有仓库，克隆需要获得授权的 GitHub 账户。
 
