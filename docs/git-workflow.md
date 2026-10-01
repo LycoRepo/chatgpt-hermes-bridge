@@ -8,7 +8,7 @@ Commit submodule gitlinks, `.gitmodules` and `components.lock.json` together. A 
 
 ## Remote configuration
 
-The authenticated GitHub account was verified as `LycoRepo`. The repository `LycoRepo/chatgpt-hermes-bridge` is private, and `origin` is `https://github.com/LycoRepo/chatgpt-hermes-bridge.git`. `main` is the published baseline. GitHub authentication is stored in the system credential manager, not in project files.
+The authenticated GitHub account was verified as `LycoRepo`. The repository `LycoRepo/chatgpt-hermes-bridge` is public (since 2026-10-02), and `origin` is `https://github.com/LycoRepo/chatgpt-hermes-bridge.git`. `main` is the published baseline. GitHub authentication is stored in the system credential manager, not in project files.
 
 This local checkout uses a repository-scoped GitHub CLI credential helper. The portable CLI must remain available at its configured local path. Other clones configure their own credential helper; those machine-specific settings are not versioned. Never embed a token in a remote URL.
 
