@@ -28,7 +28,7 @@ server.setRequestHandler(CallToolRequestSchema,async request=>{
   if(request.params.name!=='hermes_check_ui_driver'||Object.keys(request.params.arguments??{}).length||used) return {isError:true,content:[{type:'text',text:'invalid_or_repeated_request'}]};
   used=true;
   try {
-    if(!await claimUiCheck(join(root,'.local','ui-check'),nonce)) return {isError:true,content:[{type:'text',text:'ui_check_already_consumed'}]};
+    if(!await claimUiCheck(join(root,'.local'),nonce)) return {isError:true,content:[{type:'text',text:'ui_check_already_consumed'}]};
     const task=await coordinator.submitChatGPT(prompt);
     const result=await runHermesTask(coordinator,task.id,{command:config.runtime.hermes_command,profile:'approved-ui-check'});
     return {content:[{type:'text',text:JSON.stringify(result)}]};

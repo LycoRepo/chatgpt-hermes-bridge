@@ -8,6 +8,6 @@ test('planning profile stays plan with one turn and approval policy intact',()=>
 });
 test('scoped authorized profile can execute multiple turns without YOLO',()=>{
   const {run}=profileRun('hermes','fixed test','approved-ui-check',600);
-  assert.equal(run.mode,'execute');assert.equal(run.maxTurns,24);assert.equal(run.yolo,false);
+  assert.equal(run.mode,'execute');assert.equal(run.maxTurns,40);assert.equal(run.yolo,false);
   assert.throws(()=>profileRun('hermes','test','arbitrary-execute',30),/invalid_run_profile/);
 });

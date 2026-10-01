@@ -10,4 +10,4 @@ try {
   await mkdir(new URL('../.local/reports/',import.meta.url),{recursive:true});
   await writeFile(new URL('../.local/reports/hermes-ui-check-response.json',import.meta.url),JSON.stringify(task,null,2),{mode:0o600});
   console.log(JSON.stringify({id:task.id,status:task.status,response:task.response},null,2));
-} finally {await client.close();}
+} finally {await client.close().catch(()=>{});}

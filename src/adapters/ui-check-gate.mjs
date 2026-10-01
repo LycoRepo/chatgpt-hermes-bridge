@@ -1,9 +1,10 @@
 import {mkdir, open} from 'node:fs/promises';
 import {join} from 'node:path';
 
-// One human-authorized UI check per claim file. The marker survives process
-// restarts, so respawning the server cannot replay the authorization; a failed
-// run still consumes it. Recovery is a deliberate operator removal after review.
+// One human-authorized UI check per claim file. The marker lives outside the
+// executed run's workspace so that run cannot remove its own record; it survives
+// process restarts, so respawning the server cannot replay the authorization.
+// A failed run still consumes it. Recovery is a deliberate operator removal after review.
 export async function claimUiCheck(directory, nonce) {
   await mkdir(directory, {recursive: true});
   const path = join(directory, 'ui-check-claim.json');
