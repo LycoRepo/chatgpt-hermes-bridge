@@ -1,17 +1,15 @@
 import {join} from 'node:path';
-import {readFile} from 'node:fs/promises';
+import {loadConfig} from '../src/config.mjs';
 import {fileURLToPath} from 'node:url';
-import {Server} from '../components/hermes-action-bridge/node_modules/@modelcontextprotocol/sdk/dist/esm/server/index.js';
-import {StdioServerTransport} from '../components/hermes-action-bridge/node_modules/@modelcontextprotocol/sdk/dist/esm/server/stdio.js';
-import {CallToolRequestSchema,ListToolsRequestSchema} from '../components/hermes-action-bridge/node_modules/@modelcontextprotocol/sdk/dist/esm/types.js';
+import {Server} from '@modelcontextprotocol/sdk/server/index.js';
+import {StdioServerTransport} from '@modelcontextprotocol/sdk/server/stdio.js';
+import {CallToolRequestSchema,ListToolsRequestSchema} from '@modelcontextprotocol/sdk/types.js';
 import {Coordinator} from '../src/coordinator.mjs';
 import {bridgeTools} from '../src/mcp-tools.mjs';
 import {runHermesTask} from '../src/adapters/hermes-task.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
-let config;
-try {config=JSON.parse(await readFile(join(root,'config','bridge.local.json'),'utf8'));}
-catch(error) {if(error.code!=='ENOENT') throw error; config=JSON.parse(await readFile(join(root,'config','bridge.example.json'),'utf8'));}
+const config=await loadConfig(root);
 // State stays under the repository's ignored .local, independent of the client's cwd.
 const sessionId=config.escalation.bound_session_id;
 const coordinator=new Coordinator({directory:join(root,'.local','coordinator'),maxHops:config.tasks.max_hops,timeoutMs:config.tasks.timeout_seconds*1000,leaseMs:config.escalation.claim_lease_seconds*1000,sessionId});

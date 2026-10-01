@@ -6,6 +6,8 @@
   "license": "MIT",
   "type": "module",
   "engines": { "node": ">=20" },
+  "dependencies": { "@modelcontextprotocol/sdk": "1.30.0" },
+  "overrides": { "fast-uri": "3.1.8", "hono": "4.13.7", "qs": "6.16.0", "ip-address": "10.7.2" },
   "scripts": {
     "setup:git": "git config --local core.hooksPath .githooks",
     "check:components": "node scripts/check-components.mjs",
@@ -15,6 +17,14 @@
     "check:chatgpt": "node scripts/check-chatgpt-target.mjs",
     "test:target": "node --test tests/chatgpt-target.test.mjs",
     "test": "node --test tests/*.test.mjs",
-    "probe:coordinator": "node scripts/probe-coordinator.mjs"
+    "probe:coordinator": "node scripts/probe-coordinator.mjs",
+    "setup": "node scripts/manage.mjs install",
+    "configure": "node scripts/manage.mjs config",
+    "start": "node scripts/manage.mjs start",
+    "stop": "node scripts/manage.mjs stop",
+    "doctor": "node scripts/manage.mjs doctor",
+    "connect:codex": "node scripts/connect-codex.mjs",
+    "probe:connection": "node scripts/probe-connection.mjs stdio",
+    "probe:http": "node scripts/probe-connection.mjs http"
   }
 }

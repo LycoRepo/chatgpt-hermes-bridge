@@ -1,8 +1,8 @@
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
-import {Client} from '../components/hermes-action-bridge/node_modules/@modelcontextprotocol/sdk/dist/esm/client/index.js';
-import {StdioClientTransport} from '../components/hermes-action-bridge/node_modules/@modelcontextprotocol/sdk/dist/esm/client/stdio.js';
+import {Client} from '@modelcontextprotocol/sdk/client/index.js';
+import {StdioClientTransport} from '@modelcontextprotocol/sdk/client/stdio.js';
 test('real stdio MCP handshake exposes only forward-role tools and refuses invalid requests',async()=>{
   const client=new Client({name:'bridge-test',version:'1.0.0'});
   const transport=new StdioClientTransport({command:process.execPath,args:[fileURLToPath(new URL('../scripts/mcp.mjs',import.meta.url)),'chatgpt'],stderr:'pipe'});

@@ -9,11 +9,11 @@ The integration reuses the pinned action bridge to run Windows Hermes. Each plan
 - Trusted native Hermes roots can request review, increment hops, and wait for a response. `max_hops` bounds successive reviews. Unknown, finished and expired task contexts fail closed.
 - Only a configured session consumer can claim reviews. A claim capability is required to complete them. One review may be claimed globally; stale claims fail their parent and are never automatically replayed. Lease expiration is checked on the next operation, not by a background scheduler.
 - `events.jsonl` records event type, IDs, timestamps and selected task metadata. It excludes prompts, answers and capabilities. The task store necessarily retains those for delivery and restart recovery. Both files are ignored by Git. Windows file access follows inherited ACLs; POSIX `0600` is not a Windows ACL guarantee. Use a private user workspace.
-- A corrupt store or orphan lock blocks work. Locks are not stolen using a PID or elapsed-time guess. Recovery must first confirm that no coordinator is writing. Full doctor/recovery tooling follows in module 6. Do not put the state directory on network/cloud-synced storage.
+- A corrupt store or orphan lock blocks work. Locks are not stolen using a PID or elapsed-time guess. Doctor now reports task-store/lock state, but automatic lock stealing/recovery is not provided. Recovery must first confirm that no coordinator is writing. Do not put the state directory on network/cloud-synced storage.
 
 ## Local MCP roles
 
-Build the action component before using the stdio launcher. It reuses the SDK from that component's pinned npm dependency lock rather than installing another unpinned copy.
+Run `npm run setup` before using the stdio launcher. The main repository uses its own pinned SDK dependency tree, including patched transitive overrides. The action component supplies the Hermes CLI adapter. See [dependencies.md](dependencies.md).
 
 | Trusted launch role | Entry | Tools |
 |---|---|---|
@@ -23,7 +23,7 @@ Build the action component before using the stdio launcher. It reuses the SDK fr
 
 Roles are chosen by the launcher; there is no tool for changing roles or creating native Hermes roots. The Hermes role requires inherited `BRIDGE_PARENT_TASK_ID` and `BRIDGE_CONTEXT_TOKEN`. Those capabilities are injected into each worker's isolated environment and must never be placed in versioned config or logs. A native-root creation API exists for the future trusted launcher. Native Hermes MCP registration and asynchronous resume are not installed yet.
 
-The MCP launcher reads the repository's ignored `config/bridge.local.json`, falling back to the example. It anchors state under the repository's `.local` regardless of client working directory. Forward planning works with escalation disabled. The other roles require explicit `escalation.enabled: true`; the consumer also requires `bound_session_id`. No environment file is automatically loaded yet. Full schema validation and configuration generation are module 6.
+The MCP launcher validates the repository's ignored `config/bridge.local.json`, falling back to the example only when the local file is absent. It anchors state under the repository's `.local` regardless of client working directory. Forward planning works with escalation disabled. The other roles require explicit `escalation.enabled: true`; the consumer also requires `bound_session_id`. No environment file is automatically loaded. Module 6 supplies configuration generation/validation and local runtime management.
 
 `bound_session_id` is a launcher binding, not evidence that a tool caller is a particular ChatGPT conversation. A real transport must verify the authenticated consumer and its session before configuring it. A session label or model prompt alone cannot provide that verification. Do not expose this stdio service as a shared unauthenticated network service.
 

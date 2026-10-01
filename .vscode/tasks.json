@@ -3,6 +3,11 @@
   "tasks": [
     { "label": "Bridge: check components", "type": "npm", "script": "check:components", "problemMatcher": [] },
     { "label": "Bridge: check tracked secrets", "type": "npm", "script": "check:secrets", "problemMatcher": [] },
-    { "label": "Bridge: enable Git hooks", "type": "npm", "script": "setup:git", "problemMatcher": [] }
+    { "label": "Bridge: enable Git hooks", "type": "npm", "script": "setup:git", "problemMatcher": [] },
+    { "label": "Bridge: install", "type": "npm", "script": "setup", "problemMatcher": [] },
+    { "label": "Bridge: start", "type": "npm", "script": "start", "problemMatcher": [] },
+    { "label": "Bridge: stop", "type": "npm", "script": "stop", "problemMatcher": [] },
+    { "label": "Bridge: doctor", "type": "npm", "script": "doctor", "problemMatcher": [] },
+    { "label": "Bridge: test", "type": "npm", "script": "test", "problemMatcher": [] }
   ]
 }
