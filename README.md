@@ -1,6 +1,6 @@
 # ChatGPT ↔ Hermes Bridge
 
-面向 Windows Hermes 的双向协同组合项目。复用开源组件，由本仓库负责配置、任务协调和运行管理。WSL2 保留为 Codex / VS Code Remote 开发环境，Hermes 继续运行在 Windows。
+面向 Windows Hermes 的双向协同组合项目。复用开源组件，由本仓库负责配置、任务协调和运行管理
 
 **当前状态：任务协调层、本地 MCP 接口、一键安装/配置/启动/停止/doctor 已实现。Windows 和 WSL 接入 Windows Hermes 的真实往返通过。反向组件的身份修正已提交上游 PR（2026-10-02 转为 ready for review）；同日完成一次受控真实 UI 验收——发送与等待通过，回复复制路径失败（缺陷与证据见该 PR 讨论区）。新版应用中的专用会话绑定、自动接收和完整双向往返仍待验证；反向 UI 自动化保持关闭。**
 
